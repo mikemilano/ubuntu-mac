@@ -45,6 +45,23 @@ Add plugins:
 - SensioLabsInsight
 
 
+## PHP
+
+Install/setup xdebug.
+
+```
+sudo apt-get install php-xdebug
+```
+
+Set the configuration: `/etc/php/7.0/mods-available/xdebug.ini`
+```
+zend_extension=xdebug.so
+xdebug.remote_enable=1
+xdebug.remote_port=9000
+xdebug.profiler_enable=0
+xdebug.profiler_output_dir=/home/xdebug
+```
+
 ## Webex
 
 Once configured, the 'Meet Now' link won't work. If hosting a meeting, you need to schedule it, then join.
