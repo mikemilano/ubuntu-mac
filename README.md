@@ -9,6 +9,19 @@ sudo apt-get install gnome-tweak-tool
 Open tweak tool and go to `Typing -> Alt/Win key behavior`.
 Set this to: Ctrl is mapped to Win keys (and usual Ctrl keys)
 
+### Mouse fix
+
+My Logitec mouse is too fast, even at the slowest speed. This script slows it down.
+```
+#!/bin/sh
+for id in `xinput --list|grep 'Logitech Gaming Mouse G303'|perl -ne 'while (m/id=(\d+)/g){print "$1\n";}'`; do
+    # echo "setting device ID $id"
+    notify-send -t 50000  'Mouse fixed'
+    xinput set-prop $id "Device Accel Velocity Scaling" 202020 
+    xinput set-prop $id "Device Accel Constant Deceleration" 3 
+done
+```
+Add that script to /etc/rc.local to have it automatically run on startup.
 
 ## PhpStorm
 
